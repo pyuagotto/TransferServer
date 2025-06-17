@@ -10,16 +10,14 @@ system.beforeEvents.startup.subscribe((ev) => {
      * @param {string} name 
      * @param {string} description 
      * @param {import("@minecraft/server").CustomCommandParameter[]} mandatoryParameters 
-     * @param {import("@minecraft/server").CustomCommandParameter[]} optionalParameters 
      * @param {(origin: CustomCommandOrigin, ...args: any[]) => { status: CustomCommandStatus, message?: string } | undefined} callback 
      */
-    const registerCommand = function(name, description, mandatoryParameters, optionalParameters, callback) {
+    const registerCommand = function(name, description, mandatoryParameters, callback) {
         ev.customCommandRegistry.registerCommand(
             {
                 name,
                 description,
                 mandatoryParameters,
-                optionalParameters,
                 permissionLevel: CommandPermissionLevel.GameDirectors,
             },
             callback
@@ -32,11 +30,8 @@ system.beforeEvents.startup.subscribe((ev) => {
         "サーバーに転送します",
         [
             { name: "ip", type: CustomCommandParamType.String },
-        ],
-        [
             { name: "port", type: CustomCommandParamType.Integer },
         ],
-
         transfer
     );
 });
@@ -48,9 +43,10 @@ system.beforeEvents.startup.subscribe((ev) => {
  * @param {number} port
  */
 const transfer = function(origin, ip, port){
-    if(origin.sourceEntity instanceof Player){
+    const player = origin.sourceEntity;
+    if(player instanceof Player){
         system.run(()=>{
-            transferPlayer(origin.sourceEntity, ip, port);
+            transferPlayer(player, { hostname: ip, port: port });
         });
         
         return { status: CustomCommandStatus.Success };

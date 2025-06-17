@@ -1,9 +1,9 @@
 {
     "format_version": 2,
     "header": {
-        "name": "[1.21.80]Transfer Server",
+        "name": "[1.21.90]Transfer Server",
         "description": "",
-        "uuid": "a7e39bb4-bca1-4a02-ae44-c129e25c6ab0",
+        "uuid": "a7e39bb4-bca2-4a00-ae00-c129e25c6ab0",
         "version": [
             0,
             1,
@@ -19,7 +19,7 @@
         {
             "description": "GameTest module",
             "type": "script",
-            "uuid": "d2fa193c-860e-5132-ad06-97ee1b2d7b91",
+            "uuid": "d2fa193c-860e-5100-ad01-97ee1b2d7b91",
             "version": [
                 0,
                 1,
@@ -31,11 +31,11 @@
     "dependencies": [
         {
             "module_name": "@minecraft/server",
-            "version": "2.0.0-beta"
+            "version": "2.1.0-beta"
         },
         {
             "module_name": "@minecraft/server-ui",
-            "version": "2.0.0-beta"
+            "version": "2.1.0-beta"
         },
         {
             "module_name": "@minecraft/server-admin",

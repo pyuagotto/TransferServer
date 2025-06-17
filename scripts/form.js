@@ -53,7 +53,7 @@ const openAddServerMenu = function(player){
                     player.setDynamicProperty(`serverList`, JSON.stringify(serverList));
                 }
 
-                transferPlayer(player, ip, parseInt(port));
+                transferPlayer(player, { hostname: ip, port: parseInt(port) });
             }
         }
     })
@@ -152,7 +152,7 @@ export const openActionForm = function(player){
                     const ip = server.ip;
                     const port = server.port;
 
-                    transferPlayer(player, ip, parseInt(port));
+                    transferPlayer(player, { hostname: ip, port: parseInt(port) });
             }
         }
     });
